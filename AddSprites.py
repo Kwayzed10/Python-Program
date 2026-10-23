@@ -13,7 +13,7 @@ WHITE = pygame.Color('white')
 class Sprite(pygame.sprite.Sprite):
     def __init__(self,color,height,width):
         super().__init__()
-        self.image = pygame.surface[(width,height)]
+        self.image = pygame.Surface([width,height])
         self.image.fill(color)
         self.rect = self.image.get_rect()
         self.velocity = [random.choice([-1,1]),random.choice([-1,1])]
@@ -39,7 +39,23 @@ sp1 = Sprite(WHITE,20,30)
 sp1.rect.x = random.randint(0,480)
 sp1.rect.y = random.randint(0,370)
 all_sprites_list.add(sp1)
-screen = pygame.display,set_mode(((500,400)))
+screen = pygame.display.set_mode(((500,400)))
 pygame.display.set_caption("Boundary Sprite")
-bg_color = blue
+bg_color = BLUE
 screen.fill(bg_color)
+exit = False
+Clock = pygame.time.Clock()
+while not exit:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            exit = True
+        elif event.type == SPRITE_EVENT:
+            sp1.change_color
+        elif event.type == BACKROUND_EVENT:
+            change_background_color
+    all_sprites_list.update
+    screen.fill(bg_color)
+    all_sprites_list.draw(screen)
+    pygame.display.flip
+    Clock.tick(240)
+pygame.quit()
